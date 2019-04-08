@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration 
+PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="MysqlContext" defaultModelType="flat">
+		<!-- 分页插件 -->
+		<plugin type="com.lee.MybatisPlugin"/>
+		
+		<!-- 注释模板 -->
+		<!-- <commentGenerator
+			type="com.tony.easymvc.mybatis.core.MysqlCommentGenerator">
+			<property name="suppressDate" value="true" />
+			<property name="beginningDelimiter" value="`" />
+			<property name="endingDelimiter" value="`" />
+		</commentGenerator> -->
+		
+		<!-- 数据库连接 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/default" userId="admin"
+			password="admin">
+			<property name="useInformationSchema" value="true"></property>
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- 指向项目model目录 -->
+		<javaModelGenerator targetPackage="com.lee.po"
+			targetProject="D:/project/src/main/java/">
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- 指向项目Mapper.xml目录 -->
+		<sqlMapGenerator targetPackage="com.lee.mapper"
+			targetProject="D:/project/src/main/resources">
+		</sqlMapGenerator>
+
+		<!-- 指向项目Mapper.java目录 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.lee.mapper"
+			targetProject="D:/project/src/main/java">
+		</javaClientGenerator>
+		
+		<!-- 表 -->
+		<table tableName="table_user" domainObjectName="TableUser" />
+		<table tableName="table_log" domainObjectName="TableLog" />
+	</context>
+</generatorConfiguration>
